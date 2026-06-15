@@ -1,1 +1,3 @@
-.venv/
+/.ruff_cache
+/qt-env
+/__pycache__

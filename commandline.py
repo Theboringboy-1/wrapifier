@@ -25,7 +25,7 @@ class cmds:
 
     def check_valid(self):
         while True:
-            _protocol = input("Enter 1 for https" + Fore.RED + "[recommended for most cases]" +Fore.RESET + " or 2 for http : ")
+            _protocol = input("Enter (https:1)" + Fore.RED + " [recommended for most cases]" +Fore.RESET + " (http:2) : ")
             if _protocol == "1":
                 _protocol = "https://"
                 break
@@ -34,7 +34,7 @@ class cmds:
                 break
             
         try:
-            print(Fore.YELLOW + "[Logs:] " + Fore.RESET + "validating Url---")
+            print(Fore.YELLOW + "[Logs:] " + Fore.RESET + "Validating URL ...")
             url_request = requests.get(_protocol+self.url_input, timeout=10)
             url_response = url_request.status_code
             if url_response >= 200 and url_response <300:

@@ -1,4 +1,5 @@
-import os, sys, pathlib
+import os, sys, pathlib, requests
+import requests
 from pathlib import Path
 from colorama import init, Fore, Back, Style
 from PyQt6.QtCore import QUrl
@@ -20,31 +21,41 @@ class cmds:
         print(Fore.YELLOW + " - Welcome to Wrapifier! ")
         print(Fore.RED + "-" * 35 + Fore.RESET)
         self.greeter()
-
-    def logic_checker(self, ok):
-        self._valid = ok
-        if ok:
-            print("")  # gaps.
-            print(Fore.YELLOW + "[LOGS:] " + Fore.RESET + "Website Found ...")
-        else:
-            print(Fore.RED + "[Error:] " + Fore.RESET + "Not a Valid Website")
-
-        self.app.quit()
-
+        
 
     def check_valid(self):
-        view = QWebEnginePage()
-        view.loadFinished.connect(self.logic_checker)
-        view.setUrl(QUrl(self.url_input))
-        self.app.exec()
+        while True:
+            _protocol = input("Enter 1 for https" + Fore.RED + "[recommended for most cases]" +Fore.RESET + " or 2 for http : ")
+            if _protocol == "1":
+                _protocol = "https://"
+                break
+            elif _protocol == "2":
+                _protocol = "http://"
+                break
+            
+        try:
+            print(Fore.YELLOW + "[Logs:] " + Fore.RESET + "validating Url---")
+            url_request = requests.get(_protocol+self.url_input, timeout=10)
+            url_response = url_request.status_code
+            if url_response >= 200 and url_response <300:
+                self._valid = True
+            elif url_response >= 300 and url_response <400:
+                redirect_permission = input(f"The site is redirected to {url_request.url} continue (y/n) : ")
+                if redirect_permission == "y":
+                    self._valid = True
+                else:
+                    self._valid = False
 
+        except requests.exceptions.RequestException:
+            self._valid = False        
+    
     def greeter(self):
         while True:
             self.url_input = input("Enter your URL : ")
             self.check_valid()
             if self._valid == True:
                 break
-            print(f"The URL {self.url_input} is invalid.")
+            print(Fore.RED + "[Error:] " + Fore.RESET + f"The url {self.url_input} is INVALID")
 
         from builder import Builder
 
@@ -66,13 +77,13 @@ class cmds:
             self.icon = input("Enter the path to ur icon : ")
             while True:
                 if self.icon_retry(self.icon) == "dir":
-                    self.icon = input("Path leads to a directory make sure it contains the file name or leave empty to use default : ")
+                    self.icon = input(Fore.RED + "[Error:] " + Fore.RESET + "path leads to a directory/folder, include file name : ")
                     if len(self.icon) == 0:
                         self.icon = self.default_icon
                         break
                 
                 elif self.icon_retry(self.icon) == "non_existent":
-                    self.icon = input("The path is invalid, re-enter again or leave empty to use default icon : ")
+                    self.icon = input(Fore.RED + "[Error:] " + Fore.RESET + "path is invalid, Enter again : ")
                     if len(self.icon) == 0:
                         self.icon = self.default_icon    
                         break

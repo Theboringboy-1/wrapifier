@@ -7,7 +7,7 @@ from PyQt6.QtWebEngineCore import QWebEnginePage, QWebEngineProfile
 
 init()
 
-
+# the <main> class for all the features.
 class cmds:
     def __init__(self):
         self._valid = None
@@ -30,7 +30,7 @@ class cmds:
 
         self.app.quit()
 
-    # example check_valid:
+
     def check_valid(self):
         view = QWebEnginePage()
         view.loadFinished.connect(self.logic_checker)

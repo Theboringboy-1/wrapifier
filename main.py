@@ -12,6 +12,7 @@ title_window = sys.argv[2] if len(sys.argv) > 2 else "App"
 icon_window = sys.argv[3] if len(sys.argv) > 3 else ""
 
 
+# doc: Class initialized
 class app_creator(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -26,7 +27,7 @@ class app_creator(QMainWindow):
 
         self.browser.setUrl(QUrl(url_to_build))
 
-
+# doc: window manager
 def main():
     app = QApplication(sys.argv)
 

@@ -22,3 +22,32 @@ from either ``http`` or ``https`` to check availability automatically.
 Wrapifier creates **simple** source copies in your local machine, and gives you the access to them.
 you can either use the source copies or build the program into a executable using wrapifier automatic
 building.
+
+# 💿 Installation
+
+- **Create a Clone:**
+
+     Start by cloning the repository:
+     ```
+     git clone https://github.com/Theboringboy-1/wrapifier.git
+     cd wrapifier
+     ```
+
+- **Installing Dependencies:**
+
+     Wrapifier uses a list of dependencies to work, you can either install them by:
+     ```
+     pip install -r requirements.txt
+     ```
+     Or if you are using **Window 10/11:**
+     ```
+     .\Scripts\dependencies.bat
+     ```
+
+- **Run:**
+
+    Run the main file using:
+    ```
+    python commandline.py
+    ```
+     

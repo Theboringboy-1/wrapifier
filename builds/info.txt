@@ -1,1 +1,0 @@
-This directory contains every build attemppt and manages them.

@@ -1,16 +1,19 @@
 import sys
+import platform
 from PyQt6.QtWidgets import QApplication, QMainWindow
 from PyQt6.QtCore import QUrl
 from PyQt6.QtWebEngineWidgets import QWebEngineView
 from PyQt6.QtGui import QIcon
 from PIL import Image
-import ctypes
+
 
 
 # doc: giving the application their identity ,
 ## mainly for fixing the icon bug in windows.
-ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
-    "wrapifier.app.1"
+if platform.system() == "windows":
+    import ctypes
+    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(
+        "wrapifier.app.1"
 )
 
 

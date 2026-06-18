@@ -99,7 +99,11 @@ class cmds:
                         Fore.RED
                         + "[Error:] "
                         + Fore.RESET
-                        + "path leads to a directory/folder, include file name : "
+                        + "path leads to a directory/folder, include file name" 
+                        + Fore.YELLOW 
+                        + " (leave empty to continue with default icon)" 
+                        + Fore.RESET
+                        + " : "
                     )
                     if len(self.icon) == 0:
                         self.icon = self.default_icon
@@ -111,7 +115,11 @@ class cmds:
                         Fore.RED
                         + "[Error:] "
                         + Fore.RESET
-                        + "path is invalid, Enter again : "
+                        + "path is invalid, Enter again" 
+                        + Fore.YELLOW 
+                        + " (leave empty to continue with default icon)" 
+                        + Fore.RESET 
+                        + " : " 
                     )
                     if len(self.icon) == 0:
                         self.icon = self.default_icon

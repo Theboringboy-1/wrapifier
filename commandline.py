@@ -85,10 +85,14 @@ class cmds:
             return "valid"
 
     def build_input(self):
-        self.title = input("Enter the title of your app : ")
-        self.icon_choice = input("Would you like to add an icon? (y/n) :")
+        print("-" * 40)
+        self.title = input(Fore.YELLOW + "Enter the title of your app: " + Fore.RESET)
+        self.icon_choice = input(
+            Fore.YELLOW + "Would you like to add an icon? (y/n): " + Fore.RESET
+        )
         if self.icon_choice == "y":
-            self.icon = input("Enter the path to ur icon : ")
+            self.icon = input("Enter the path of Icon: ")
+            print("-" * 30)
             while True:
                 if self.icon_retry(self.icon) == "dir":
                     self.icon = input(
@@ -119,7 +123,8 @@ class cmds:
                     print("Building the app")
                     break
         else:
-            self.icon = "long-paper-roll.png"
+            print("-" * 30)
+            self.icon = "long-paper-roll.ico"
             self.have_icon = False
 
 

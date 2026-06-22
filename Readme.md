@@ -50,4 +50,31 @@ building.
     ```
     python commandline.py
     ```
-     
+
+# 🔨 Wrapping
+
+_**Follow the Program Instructions. When the Ping Request arrive use either 1 or 2. this depends upon your website. if you have a valid
+website that is not working, try both of them to see if any of them works.**_
+
+_**Close the "Website Preview Window" to Continue Building the wrapper. The program will automatically guide you through the next steps.**_
+
+# 🖥️ Tested Enviroments
+
+- **Arch Linux**
+- **Windows 10 and 11**
+  (_Older versions of windows may not be supported: [Learn More](https://stackoverflow.com/questions/70937654/pyqt6-installation-on-windows-7-32-bit)_ )
+
+# 🩹 Known Bugs
+
+**Valid Websites Failure:**
+
+Sometimes the Program doesn't recognize some valid websites, this is due to the ``requests`` we are looking forwared to fix it. Common sites include
+_Vercel_ and other free hosting sites that are not compatible for now.
+
+**Windows Shortcut Bug:**
+
+Well, the shortcuts feature in the end of the Compiled (.exe) on windows may seem to be broken. the main issues are:
+
+- _Shortcuts Icon not showwing on Desktop_
+- _Provided (.png) will not have tranparency_
+
